@@ -82,10 +82,10 @@ return [
                     'scheme' => env('REVERB_SCHEME', 'https'),
                     'useTLS' => env('REVERB_SCHEME', 'https') === 'https',
                 ],
-                // 'allowed_origins' => env('APP_ENV') === 'production'
-                //     ? array_values(array_filter([env('FRONTEND_URL')]))
-                //     : ['*'],
-                'allowed_origins' => ['*'],
+                'allowed_origins' => [
+                    'https://racket-tier.vercel.app',
+                    'https://*.vercel.app',
+                ],
                 'ping_interval' => env('REVERB_APP_PING_INTERVAL', 60),
                 'activity_timeout' => env('REVERB_APP_ACTIVITY_TIMEOUT', 30),
                 'max_connections' => env('REVERB_APP_MAX_CONNECTIONS'),
