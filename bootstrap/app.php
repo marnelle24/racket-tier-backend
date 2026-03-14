@@ -23,10 +23,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'broadcasting/auth',
         ]);
     })
-    ->withBroadcasting(
-        __DIR__.'/../routes/channels.php',
-        ['prefix' => 'api', 'middleware' => ['api', 'auth:sanctum']],
-    )
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (ValidationException $e, Request $request) {
             if ($request->is('api/*')) {
