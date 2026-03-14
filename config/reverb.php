@@ -83,6 +83,10 @@ return [
                     'useTLS' => env('REVERB_SCHEME', 'https') === 'https',
                 ],
                 'allowed_origins' => [
+                    'http://localhost:3000', 
+                    'http://127.0.0.1:3000', 
+                    'http://0.0.0.0:3000',
+                    env('FRONTEND_URL'),
                     'https://racket-tier.vercel.app',
                     'https://*.vercel.app',
                 ],
