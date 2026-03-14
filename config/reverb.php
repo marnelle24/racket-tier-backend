@@ -84,7 +84,10 @@ return [
                 ],
                 'allowed_origins' => env('APP_ENV') === 'production'
                     ? array_values(array_filter([env('FRONTEND_URL')]))
-                    : ['*'],
+                    : array_values(array_unique(array_filter(array_merge(
+                        [env('FRONTEND_URL')],
+                        ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://0.0.0.0:3000', 'http://192.168.1.116:3000', 'http://192.168.1.111:3000']
+                    )))),
                 'ping_interval' => env('REVERB_APP_PING_INTERVAL', 60),
                 'activity_timeout' => env('REVERB_APP_ACTIVITY_TIMEOUT', 30),
                 'max_connections' => env('REVERB_APP_MAX_CONNECTIONS'),
