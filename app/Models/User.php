@@ -19,10 +19,15 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    public const ROLE_USER = 'user';
+
+    public const ROLE_ADMIN = 'admin';
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
         'age',
         'pronoun',
         'primary_sport',
@@ -76,5 +81,10 @@ class User extends Authenticatable
     public function facilityPresences(): HasMany
     {
         return $this->hasMany(FacilityPresence::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
     }
 }

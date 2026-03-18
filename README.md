@@ -54,6 +54,19 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+## Admin dashboard (Blade)
+
+Session-based admin UI lives under **`/admin`**:
+
+1. Run migrations: `php artisan migrate`
+2. Create an admin user either:
+   - Set `ADMIN_EMAIL` and `ADMIN_PASSWORD` in `.env`, then run `php artisan db:seed`, or
+   - Manually set `role` to `admin` on a user in the `users` table (after logging in via API or seed).
+3. Open **`/admin/login`**, sign in with that account.
+4. Browse Users, Games, and Facilities; promote/demote roles on user detail pages (you cannot remove your own admin role).
+
+The public API continues to use Sanctum; the admin area uses the `web` guard and cookies.
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
